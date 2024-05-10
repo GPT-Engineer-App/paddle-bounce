@@ -33,8 +33,12 @@ const Index = () => {
       }
 
       // Ball collision with paddles
-      if ((ballPosition.x <= paddleWidth && ballPosition.y >= paddle1Y && ballPosition.y <= paddle1Y + paddleHeight) || (ballPosition.x >= gameWidth - paddleWidth - ballSize && ballPosition.y >= paddle2Y && ballPosition.y <= paddle2Y + paddleHeight)) {
+      if ((ballPosition.x <= paddleWidth && ballPosition.y + ballSize > paddle1Y && ballPosition.y < paddle1Y + paddleHeight) || (ballPosition.x + ballSize >= gameWidth - paddleWidth && ballPosition.y + ballSize > paddle2Y && ballPosition.y < paddle2Y + paddleHeight)) {
         setBallDirection((prev) => ({ x: -prev.x, y: prev.y }));
+        setBallPosition((prev) => ({
+          x: prev.x <= paddleWidth ? paddleWidth + 1 : gameWidth - paddleWidth - ballSize - 1,
+          y: prev.y,
+        }));
       }
 
       // Scoring
