@@ -50,6 +50,26 @@ const Index = () => {
     setBallDirection({ x: 2, y: 1 });
   };
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowUp") {
+        movePaddle(1, -1);
+      } else if (event.key === "ArrowDown") {
+        movePaddle(1, 1);
+      } else if (event.key === "ArrowLeft") {
+        movePaddle(2, -1);
+      } else if (event.key === "ArrowRight") {
+        movePaddle(2, 1);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   const movePaddle = (paddle, direction) => {
     if (paddle === 1) {
       setPaddle1Y((prev) => Math.max(0, Math.min(gameHeight - paddleHeight, prev + direction * 20)));
@@ -57,6 +77,26 @@ const Index = () => {
       setPaddle2Y((prev) => Math.max(0, Math.min(gameHeight - paddleHeight, prev + direction * 20)));
     }
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowUp") {
+        movePaddle(1, -1);
+      } else if (event.key === "ArrowDown") {
+        movePaddle(1, 1);
+      } else if (event.key === "ArrowLeft") {
+        movePaddle(2, -1);
+      } else if (event.key === "ArrowRight") {
+        movePaddle(2, 1);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <Container centerContent maxW="container.xl">
