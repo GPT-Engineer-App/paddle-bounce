@@ -22,9 +22,14 @@ const Index = () => {
         y: prev.y + ballDirection.y,
       }));
 
-      // Ball collision with top or bottom
+      // Ball collision with top or bottom, including corner handling
       if (ballPosition.y <= 0 || ballPosition.y >= gameHeight - ballSize) {
         setBallDirection((prev) => ({ x: prev.x, y: -prev.y }));
+
+        setBallPosition((prev) => ({
+          x: prev.x,
+          y: prev.y <= 0 ? ballSize : gameHeight - ballSize - 1,
+        }));
       }
 
       // Ball collision with paddles
