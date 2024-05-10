@@ -117,10 +117,12 @@ const Index = () => {
           <Button onClick={() => movePaddle(2, -1)}>Up</Button>
           <Button onClick={() => movePaddle(2, 1)}>Down</Button>
         </Flex>
-        <Box ref={gameAreaRef} position="relative" width={`${gameWidth}px`} height={`${gameHeight}px`} bg="gray.200">
-          <Box position="absolute" left={`${ballPosition.x}px`} top={`${ballPosition.y}px`} width={`${ballSize}px`} height={`${ballSize}px`} bg="black" borderRadius="50%" />
-          <Box position="absolute" left="0" top={`${paddle1Y}px`} width={`${paddleWidth}px`} height={`${paddleHeight}px`} bg="blue.500" />
-          <Box position="absolute" right="0" top={`${paddle2Y}px`} width={`${paddleWidth}px`} height={`${paddleHeight}px`} bg="green.500" />
+        <Box ref={gameAreaRef} position="relative" width={`${gameWidth}px`} height={`${gameHeight}px`} bg="brand.700">
+          {" "}
+          {}
+          <Box position="absolute" left={`${ballPosition.x}px`} top={`${ballPosition.y}px`} width={`${ballSize}px`} height={`${ballSize}px`} bg="brand.900" borderRadius="50%" /> {}
+          <Box position="absolute" left="0" top={`${paddle1Y}px`} width={`${paddleWidth}px`} height={`${paddleHeight}px`} bg="brand.800" /> {}
+          <Box position="absolute" right="0" top={`${paddle2Y}px`} width={`${paddleWidth}px`} height={`${paddleHeight}px`} bg="brand.800" /> {}
         </Box>
         <Text>
           Score: Player 1: {scores.player1} - Player 2: {scores.player2}
